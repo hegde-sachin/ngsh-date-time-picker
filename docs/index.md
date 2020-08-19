@@ -49,5 +49,5 @@ export class AppModule { }
 <sh-date-time-picker-inline [pickerType]="time" [timeFormat]="12"></sh-date-time-picker-inline>
 ```
 
-
-
+#### Demo
+https://ang-date-time-picker.web.app/
