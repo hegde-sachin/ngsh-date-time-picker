@@ -1,0 +1,192 @@
+@import '~@angular/material/theming';
+
+@mixin sh-date-time-picker-theming ($theme) {
+  $primary: map-get($theme, primary);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .sh-date-time-picker {
+    background-color: mat-color($background, card);
+  }
+
+  .date-time-picker-header {
+    background-color: mat-color($primary, 500);
+    color: mat-contrast($primary, 500);
+    padding: 8px;
+  }
+
+  .non-selection-mode {
+    background-color: mat-color($background, selected-button);
+    color: mat-color($foreground, selected-button);
+  }
+
+  .selection-mode {
+    pointer-events: none;
+    background: mat-color($primary, 50);
+    color: mat-color($primary, 500);
+  }
+
+  .meridiem-picker {
+    width: 60px;
+    height: 32px;
+    border: 1px solid mat-color($background, selected-button);
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .year {
+    width: 48px;
+    height: 32px;
+    margin: 4px;
+    border-radius: 999px;
+
+    &:hover:not(.selected-year) {
+      background-color: mat-color($background, selected-button);
+      cursor: pointer;
+    }
+
+    &.current-year {
+      border: 1px solid rgba(0,0,0,.38);
+    }
+
+    &.selected-year {
+      background: mat-color($primary, 500);
+      color: mat-contrast($primary, 500);
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .date {
+    width: 32px;
+    height: 32px;
+    margin: 4px;
+    border-radius: 50%;
+
+    &:hover:not(.selected-date) {
+      background-color: mat-color($background, selected-button);
+      cursor: pointer;
+    }
+
+    &.selected-date {
+      background-color: mat-color($primary, 500);
+      color: mat-contrast($primary, 500);
+      border: none;
+      cursor: pointer;
+    }
+
+    &.current-date {
+      border: 1px solid rgba(0,0,0,.38);
+    }
+
+    &.disabled {
+      pointer-events: none;
+      color: mat-color($background, disabled-button);
+    }
+  }
+
+  .clock-face {
+    background-color: mat-color($background, selected-button);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 290px;
+    height: 290px;
+
+    .clock-face-inner {
+      position: absolute;
+    }
+
+    .clock-face-container {
+      margin-left: -2px;
+
+      .clock-face-number {
+        position: absolute;
+        transform-origin: 0 100%;
+        width: 50px;
+        text-align: center;
+        z-index: 2;
+
+        &.clock-face-number-outer {
+            height: calc(290px / 2 - 20px);
+            > span {
+                font-size: 16px;
+                color: mat-color($foreground, icon);
+            }
+        }
+        &.clock-face-number-inner {
+            > span {
+              font-size: 14px;
+              color: mat-color($foreground, slider-off-active);
+            }
+        }
+        > span {
+            user-select: none;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            border-radius: 50%;
+            font-weight: 500;
+            &.active {
+              background-color: mat-color($primary, 500);
+              color: mat-color($background, card);
+            }
+            &.disabled {
+              color: mat-color($foreground, disabled-button);
+            }
+        }
+      }
+    }
+
+    .clock-face-clock-hand {
+      height: 103px;
+      width: 2px;
+      transform-origin: 0 100%;
+      position: absolute;
+      top: calc(50% - 103px);
+      z-index: 1;
+      background-color: mat-color($primary, 500);
+
+      &:after {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: inherit;
+        position: absolute;
+        bottom: -3px;
+        left: -3.5px;
+      }
+    }
+
+    .clock-face-clock-hand-minute {
+      &:before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        background-color: mat-color($background, card);
+        border-radius: 50%;
+        position: absolute;
+        top: -8px;
+        left: calc(50% - 8px);
+        box-sizing: content-box;
+        border-width: 4px;
+        border-style: solid;
+        border-color: mat-color($primary, 500);
+      }
+    }
+
+  }
+}
+
+.sh-button-sm {
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 28px;
+}

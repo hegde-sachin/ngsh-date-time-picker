@@ -1,0 +1,11 @@
+@import './sh-colors';
+
+$sh-dark-theme-primary: mat-palette($sh-theme-primary);
+$sh-dark-theme-accent: mat-palette($sh-theme-secondary);
+$sh-dark-theme-warn: mat-palette($mat-red);
+
+$sh-dark-theme: mat-dark-theme(
+  $sh-dark-theme-primary,
+  $sh-dark-theme-accent,
+  $sh-dark-theme-warn
+);

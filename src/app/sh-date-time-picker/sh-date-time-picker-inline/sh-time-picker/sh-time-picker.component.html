@@ -1,0 +1,33 @@
+<div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="center center" class="time-picker">
+  <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="center center" class="time-picker-header">
+    <div fxLayout="row" fxLayoutAlign="center center"
+     class="time-picker-action" [ngClass]="{
+       'selection-mode': timeSelectionMode === 'hour',
+       'non-selection-mode': timeSelectionMode !== 'hour'
+      }" (click)="selectTimePickerMode('hour')">{{hourSelected.time}}</div>
+    <span>:</span>
+    <div fxLayout="row" fxLayoutAlign="center center"
+     class="time-picker-action" [ngClass]="{
+       'selection-mode': timeSelectionMode === 'minute',
+       'non-selection-mode': timeSelectionMode !== 'minute'
+      }" (click)="selectTimePickerMode('minute')">{{minuteSelected.time}}</div>
+    <span>:</span>
+    <div fxLayout="row" fxLayoutAlign="center center"
+     class="time-picker-action" [ngClass]="{
+       'selection-mode': timeSelectionMode === 'second',
+       'non-selection-mode': timeSelectionMode !== 'second'
+      }" (click)="selectTimePickerMode('second')">{{secondSelected.time}}</div>
+    <div fxLayout="row" fxLayoutAlign="center center" class="meridiem-picker" *ngIf="timeFormat === 12">
+      <div fxLayoutAlign="center center" class="full-width full-height" [ngClass]="{
+       'selection-mode': meridiem.value === 'am'
+      }" (click)="selectMeridiem('am')">AM</div>
+      <div fxLayoutAlign="center center" class="full-width full-height" [ngClass]="{
+       'selection-mode': meridiem.value === 'pm'
+      }" (click)="selectMeridiem('pm')">PM</div>
+    </div>
+  </div>
+  <div>
+    <sh-time-picker-clock [faceTime]="faceTime" [selectedTime]="selectedTime" [unit]="timeSelectionMode === 'hour' ? null : timeUnit.MINUTE"
+     [format]="timeSelectionMode === 'hour' ? timeFormat : null" (timeSelected)="onTimeSelected($event)"></sh-time-picker-clock>
+  </div>
+</div>

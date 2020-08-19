@@ -1,0 +1,24 @@
+<div fxLayout="column" fxLayoutGap="8px" class="mat-typography full-height sh-date-time-picker">
+  <div fxLayout="row" fxLayoutGap="4px" fxLayoutAlign="center center" class="date-time-picker-header mat-elevation-z2">
+    <button class="sh-button-sm" mat-button (click)="toggleDateAndTimeView()" *ngIf="datePickerEnabled">{{getDateString()}}</button>
+    <button class="sh-button-sm" mat-button (click)="toggleDateAndTimeView()" *ngIf="timePickerEnabled">{{getTimeString()}}</button>
+  </div>
+  <sh-date-picker *ngIf="datePickerEnabled && isShowDatePicker" [selectedDateTime]="selectedDateTime"
+    (dateSelect)="onDateSelection($event)"></sh-date-picker>
+  <sh-time-picker *ngIf="timePickerEnabled && isShowTimePicker" [selectedDateTime]="selectedDateTime" [timeFormat]="timeFormat"
+    (timeSelection)="ontimeSelection($event)"></sh-time-picker>
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px" class="date-picker-actions">
+    <div>
+      <button mat-icon-button *ngIf="isShowDatePicker && timePickerEnabled" (click)="toggleDateAndTimeView()">
+        <mat-icon>schedule</mat-icon>
+      </button>
+      <button mat-icon-button *ngIf="isShowTimePicker && datePickerEnabled" (click)="toggleDateAndTimeView()">
+        <mat-icon>today</mat-icon>
+      </button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+      <button mat-button color="primary" (click)="onDateTimeCancel()">Cancel</button>
+      <button mat-button color="primary" (click)="onDateTimeSelection()">OK</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+@import '../sh-date-time-picker';
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.date-picker-actions {
+  padding: 8px;
+}

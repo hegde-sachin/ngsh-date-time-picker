@@ -1,0 +1,20 @@
+$toolbar-height: 60px;
+
+.toolbar {
+  height: $toolbar-height;
+}
+
+.sidenav {
+  height: calc(100vh - #{$toolbar-height});
+}
+
+.sh-margin-lg {
+  margin: 16px;
+}
+
+.example-container {
+  margin: 16px;
+  padding: 16px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 4px;
+}

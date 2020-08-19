@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import './sh-light-theme.scss';
+@import './sh-dark-theme.scss';
+@import './component-theme.scss';
+
+.sh-light-theme {
+  @include angular-material-theme($sh-light-theme);
+  @include custom-components-theme($sh-light-theme);
+}
+
+.sh-dark-theme {
+  @include angular-material-theme($sh-dark-theme);
+  @include custom-components-theme($sh-dark-theme);
+}

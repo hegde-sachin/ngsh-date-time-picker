@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+
+@import '../../app/sh-date-time-picker/sh-date-time-picker';
+
+@mixin custom-components-theme($theme) {
+  @include sh-date-time-picker-theming($theme);
+}

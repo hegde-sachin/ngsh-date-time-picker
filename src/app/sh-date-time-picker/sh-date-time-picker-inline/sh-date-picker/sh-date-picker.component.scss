@@ -1,0 +1,39 @@
+@import '../../sh-date-time-picker';
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.date-picker {
+  min-height: 350px;
+  height: 100%;
+  width: 100%;
+}
+
+.sh-datepicker-header {
+  padding: 0px 8px;
+}
+
+.sh-datepicker-content {
+  min-height: 300px;
+  padding: 0px 8px 8px 8px;
+}
+
+.datepicker-cell {
+  font-size: 13px;
+  width: calc(100%/7);
+  height: calc(100%/7);
+}
+
+.yearpicker-cell {
+  font-size: 13px;
+  width: calc(100%/4);
+  height: calc(100%/4);
+}
+
+.day {
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+}

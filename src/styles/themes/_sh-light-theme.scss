@@ -1,0 +1,11 @@
+@import './sh-colors.scss';
+
+$sh-light-theme-primary: mat-palette($sh-theme-primary);
+$sh-light-theme-accent: mat-palette($sh-theme-secondary);
+$sh-light-theme-warn: mat-palette($mat-red);
+
+$sh-light-theme: mat-light-theme(
+  $sh-light-theme-primary,
+  $sh-light-theme-accent,
+  $sh-light-theme-warn
+);
