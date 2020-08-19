@@ -1,0 +1,80 @@
+<div fxLayout="column" fxLayoutGap="8px" class="date-picker">
+  <div class="sh-datepicker-header">
+    <div *ngIf="isShowingDateView" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="full-width" fxLayoutAlign="start center">
+        <button mat-button (click)="toggleYearAndDateView()">
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="4px">
+            <span>{{getMonthStr(selectedMonth)}} {{selectedYear}}</span>
+            <mat-icon>arrow_drop_down</mat-icon>
+          </div>
+        </button>
+      </div>
+      <div class="full-width" fxLayoutAlign="end center">
+        <button mat-icon-button (click)="setMonth(-1)">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button mat-icon-button (click)="setMonth(1)">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="isShowingYearView" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="full-width" fxLayoutAlign="center center">
+        <button mat-button (click)="toggleYearAndDateView()">
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="4px">
+            <span>{{getYearStr()}}</span>
+            <mat-icon>arrow_drop_up</mat-icon>
+          </div>
+        </button>
+      </div>
+      <div class="full-width" fxLayoutAlign="end center">
+        <button mat-icon-button (click)="setYear(-1)">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button mat-icon-button (click)="setYear(1)">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="isShowingMonthView" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="full-width" fxLayoutAlign="start center">
+        <button mat-button (click)="toggleMonthView()">
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="4px">
+            <span>{{selectedYear}}</span>
+            <mat-icon>arrow_drop_up</mat-icon>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="sh-datepicker-content full-height">
+    <div fxLayout="row wrap" class="full-width full-height" *ngIf="isShowingDateView">
+      <div *ngFor="let day of daysMap" class="datepicker-cell" fxLayout="row" fxLayoutAlign="center center">
+        <span class="day" fxLayout="row" fxLayoutAlign="center center">{{day}}</span>
+      </div>
+      <div *ngFor="let monthDetail of monthDetails" class="datepicker-cell" fxLayout="row" fxLayoutAlign="center center">
+        <div class="date" [ngClass]="{
+            'disabled': monthDetail.month !== 0,
+            'current-date': isCurrentDay(monthDetail),
+            'selected-date': isSelectedDay(monthDetail)
+          }" (click)="onDateSelection(monthDetail)" fxLayout="row" fxLayoutAlign="center center">{{monthDetail.date}}</div>
+      </div>
+    </div>
+    <div fxLayout="row wrap" class="full-width full-height" *ngIf="isShowingYearView">
+      <div *ngFor="let year of yearDetails" class="yearpicker-cell" fxLayout="row" fxLayoutAlign="center center">
+        <div class="year" [ngClass]="{
+            'current-year': isCurrentYear(year),
+            'selected-year': isSelectedYear(year)
+            }" (click)="onYearSelection(year)" fxLayout="row" fxLayoutAlign="center center">{{year}}</div>
+      </div>
+    </div>
+    <div fxLayout="row wrap" class="full-width full-height" *ngIf="isShowingMonthView">
+      <div *ngFor="let month of monthMap; let monthIndex = index" class="yearpicker-cell" fxLayout="row" fxLayoutAlign="center center">
+        <div class="year" [ngClass]="{
+            'current-year': isCurrentMonth(month),
+            'selected-year': isSelectedMonth(monthIndex)
+            }" (click)="onMonthSelection(monthIndex)" fxLayout="row" fxLayoutAlign="center center">{{shortMonthMap[monthIndex]}}</div>
+      </div>
+    </div>
+  </div>
+</div>
