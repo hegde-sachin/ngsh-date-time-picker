@@ -1,37 +1,54 @@
-## Welcome to GitHub Pages
+# Angular Date and Time Picker
 
-You can use the [editor on GitHub](https://github.com/sachin-ananth-hegde/date-time-picker/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+An Angular component to pick date and/or time and supports Angular 9+.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
+### Dependencies
+Install the dependenccies mentioned below
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+npm install @angular/material
+npm install @angular/flex-layout
+npm install moment
+npm install tinycolor2
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### How to use
+Import `ShDateTimePickerModule` into the module where you want to use `sh-date-time-picker`
+```markdown
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-### Jekyll Themes
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sachin-ananth-hegde/date-time-picker/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+import { ShDateTimePickerModule } from './sh-date-time-picker/sh-date-time-picker.module';
 
-### Support or Contact
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    ShDateTimePickerModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+#### Basic Date and Time picker
+```markdown
+<mat-form-field appearance="outline">
+  <mat-label>Choose a date</mat-label>
+  <input matInput [shDateTimePicker]="shDateTimePicker" [formControl]="dateTimeControl" autocomplete="off">
+  <sh-date-time-picker #shDateTimePicker></sh-date-time-picker>
+</mat-form-field>
+```
+#### Inline Time picker
+```markdown
+<sh-date-time-picker-inline [pickerType]="time" [timeFormat]="12"></sh-date-time-picker-inline>
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+
+
